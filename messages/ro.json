@@ -1,0 +1,267 @@
+{
+  "nav": {
+    "home": "Acasă",
+    "about": "Despre noi",
+    "services": "Servicii",
+    "clients": "Clienți",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "home": {
+    "meta": {
+      "title": "IM Trainer SRL — Training IT și Dezvoltare Software în România",
+      "description": "Cursuri corporative și publice de web development, soluții software la comandă și consultanță IT. Bazați în România, activi la nivel internațional."
+    },
+    "hero": {
+      "badge": "Training IT & Software",
+      "headline": "Formăm Experți în Web Development",
+      "subheadline": "Cursuri personalizate pentru companii, cursuri publice de web development și soluții software la comandă. Bazați în România, activi la nivel internațional.",
+      "ctaPrimary": "Contactează-ne",
+      "ctaSecondary": "Serviciile noastre"
+    },
+    "intro": {
+      "title": "Cine suntem",
+      "text": "IM Trainer SRL este o companie românească cu experiență solidă în training IT și dezvoltare software. Lucrăm cu companii și profesioniști pentru a transforma cunoștințele teoretice în abilități practice, gata de producție. De la cursuri introductive până la programe avansate pentru echipe tehnice, adaptăm fiecare program la nevoile reale ale clientului."
+    },
+    "services": {
+      "title": "Ce oferim",
+      "subtitle": "De la cursuri corporative la aplicații web complete — suntem partenerul tău de încredere în lumea IT."
+    },
+    "udemy": {
+      "badge": "Curs online",
+      "title": "Devino Web Developer de la Zero",
+      "description": "Un ghid complet pas cu pas prin HTML, CSS, JavaScript, Git și proiecte practice. Recomandat atât pentru începători cât și pentru developeri care vor să-și consolideze fundamentele.",
+      "cta": "Accesează cursul pe Udemy"
+    },
+    "clients": {
+      "title": "Clienți și Parteneri"
+    },
+    "testimonials": {
+      "title": "Ce spun clienții noștri",
+      "items": [
+        {
+          "quote": "Cursul a depășit așteptările mele. Conținut practic, bine structurat și trainer pasionat.",
+          "author": "Participant curs web development",
+          "company": "FastTrackIT"
+        },
+        {
+          "quote": "Am înțeles în sfârșit concepte de frontend pe care le evitam de ani de zile. Excelent pentru developeri cu background în alte tehnologii.",
+          "author": "Senior Developer",
+          "company": "Broadridge"
+        },
+        {
+          "quote": "Cursul pentru IMM-uri a fost exact ce aveam nevoie — practic, la obiect și adaptat nivelului nostru.",
+          "author": "Antreprenor",
+          "company": "Transilvania IT"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ești gata să ridici nivelul echipei tale?",
+      "subtitle": "Contactează-ne pentru un curs personalizat sau o consultație gratuită.",
+      "button": "Ia legătura cu noi"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "Despre IM Trainer SRL — Training IT și Dezvoltare Software",
+      "description": "Aflați mai multe despre IM Trainer SRL, experiența noastră în training IT și valorile care ne ghidează."
+    },
+    "hero": {
+      "title": "Despre IM Trainer SRL",
+      "subtitle": "Pasiune pentru educație și tehnologie. Experiență solidă în training IT corporativ, cursuri publice de web development și dezvoltare software."
+    },
+    "story": {
+      "title": "Povestea noastră",
+      "p1": "IM Trainer SRL s-a născut din pasiunea pentru educație și convingerea că tehnologia web trebuie să fie accesibilă tuturor. Am construit curricule practice, am predat în clasă și online, și am ajutat sute de cursanți să facă saltul în cariera IT.",
+      "p2": "Experiența noastră acoperă companii mari și IMM-uri, cursuri livrate în română și engleză, grupuri cu background tehnic variat — de la developeri de backend la antreprenori care vor să înțeleagă mai bine lumea digitală. Indiferent de nivel sau context, abordarea noastră rămâne aceeași: practică, clară și orientată spre rezultate reale."
+    },
+    "philosophy": {
+      "title": "Filosofia noastră",
+      "item1": {
+        "title": "Practic înainte de teoretic",
+        "description": "Fiecare concept este ancorat într-un exemplu real sau un proiect concret. Cursanții pleacă cu cod funcțional, nu doar cu notițe."
+      },
+      "item2": {
+        "title": "Adaptat audienței",
+        "description": "Nu există un curs universal. Adaptăm conținutul, ritmul și exemplele la nivelul și contextul fiecărui grup."
+      },
+      "item3": {
+        "title": "Calitate, nu cantitate",
+        "description": "Preferăm să acoperim mai puține subiecte în profunzime decât să trecem în fugă prin toate. Înțelegerea profundă bate lista de bifat."
+      }
+    },
+    "skills": {
+      "title": "Tehnologii și competențe",
+      "subtitle": "Curriculum-ul nostru acoperă întreg ecosistemul modern de web development."
+    }
+  },
+  "services": {
+    "meta": {
+      "title": "Servicii — IM Trainer SRL",
+      "description": "Training corporativ, cursuri publice de web development, dezvoltare software la comandă și consultanță IT."
+    },
+    "hero": {
+      "title": "Serviciile noastre",
+      "subtitle": "Soluții complete de training IT și dezvoltare software, adaptate nevoilor companiei tale."
+    },
+    "corporate": {
+      "badge": "Pentru companii",
+      "title": "Training Corporativ IT",
+      "description": "Programe de formare personalizate pentru echipele companiei tale. Livrăm cursuri de web development adaptate nivelului și contextului tehnic al participanților — de la introducere în HTML/CSS/JS până la arhitecturi React moderne.",
+      "features": [
+        "Curriculum adaptat nevoilor echipei",
+        "Livrare în română sau engleză",
+        "Cursuri pentru developeri cu background non-web",
+        "Format flexibil: la sediu sau online",
+        "Suport post-curs"
+      ]
+    },
+    "public": {
+      "badge": "Open enrollment",
+      "title": "Cursuri Publice Web Development",
+      "description": "Cursuri deschise oricui dorește să-și construiască o carieră în web development sau să-și consolideze skill-urile existente. De la zero la angajabil — sau de la cunoscător la expert.",
+      "features": [
+        "Nivel introductiv și avansat",
+        "Proiecte practice incluse",
+        "HTML, CSS, JavaScript, React",
+        "Git și fluxuri de lucru moderne",
+        "Certificat de absolvire"
+      ]
+    },
+    "software": {
+      "badge": "La comandă",
+      "title": "Dezvoltare Software & Website-uri",
+      "description": "Construim aplicații web și site-uri de prezentare la comandă, adaptate nevoilor și bugetului tău. De la un site de prezentare elegant până la o aplicație web complexă — livrăm soluții funcționale, performante și ușor de menținut.",
+      "features": [
+        "Site-uri de prezentare și landing pages",
+        "Aplicații web personalizate",
+        "Next.js, React, TypeScript",
+        "Optimizat pentru SEO și performanță",
+        "Mentenanță și suport disponibil"
+      ]
+    },
+    "consulting": {
+      "badge": "Expertiză tehnică",
+      "title": "Consultanță Tehnică",
+      "description": "Oferim ghidare tehnică pentru echipe și proiecte. Code review, revizuiri de arhitectură, best practices moderne de web development — ajutăm echipele să lucreze mai bine și mai eficient.",
+      "features": [
+        "Code review și feedback structurat",
+        "Revizuiri de arhitectură frontend",
+        "Best practices React și Next.js",
+        "Mentoring pentru echipe tehnice",
+        "Sesiuni de Q&A și pair programming"
+      ]
+    },
+    "udemy": {
+      "badge": "Disponibil online",
+      "title": "Curs Udemy: Devino Web Developer de la Zero",
+      "description": "Un ghid complet și pas cu pas pentru oricine dorește să înceapă în web development. Acoperă HTML, CSS, JavaScript, Git, flexbox, grid, DOM, events și proiecte practice.",
+      "cta": "Accesează cursul pe Udemy",
+      "url": "https://nmatei.github.io/web"
+    },
+    "cta": {
+      "title": "Nu știi sigur ce ai nevoie?",
+      "subtitle": "Contactează-ne și discutăm împreună. Îți propunem soluția potrivită pentru tine sau echipa ta.",
+      "button": "Contactează-ne"
+    }
+  },
+  "clients": {
+    "meta": {
+      "title": "Clienți și Parteneri — IM Trainer SRL",
+      "description": "Companii cu care am colaborat: FastTrackIT, Transilvania IT, Broadridge. Experiență în training corporativ și cursuri publice."
+    },
+    "hero": {
+      "title": "Clienți și Parteneri",
+      "subtitle": "Am colaborat cu companii din România și de pe plan internațional, livrând programe de training de calitate pentru sute de participanți."
+    },
+    "fasttrackit": {
+      "collaboration": "Colaborare de lungă durată",
+      "description": "Colaborare solidă cu FastTrackIT — una dintre cele mai cunoscute companii de training IT din România. Am făcut parte din echipa fondatoare de traineri, livrând cursuri de web development atât în clasă cât și online. Curriculum-ul acoperă HTML, CSS, JavaScript și proiecte practice pentru cursanți aflați la început de drum în IT.",
+      "detail1": "Cursuri introductive și avansate de web development",
+      "detail2": "Formate în clasă (Cluj-Napoca) și online",
+      "detail3": "Implicat din primii ani ai companiei"
+    },
+    "transilvaniait": {
+      "collaboration": "Colaborare pe cursuri pentru IMM-uri",
+      "description": "Colaborare cu Transilvania IT pentru dezvoltarea și livrarea de cursuri de web development destinate IMM-urilor din România. Programele au acoperit atât nivel introductiv cât și avansat, cu focus pe aplicabilitate practică pentru antreprenori și echipe mici.",
+      "detail1": "Cursuri intro și avansate de web pentru IMM-uri",
+      "detail2": "Adaptat nevoilor antreprenorilor și echipelor mici",
+      "detail3": "Livrat în limba română"
+    },
+    "broadridge": {
+      "collaboration": "Training intern corporativ",
+      "description": "Training intern pentru echipele Broadridge (fosta itiviti) — mai multe grupe de angajați cu background tehnic variat (developeri de backend, systems engineers etc.) care doreau să aprofundeze web development-ul. Cursurile au fost livrate atât în română cât și în engleză, cu conținut adaptat pentru developeri experimentați non-web.",
+      "detail1": "Multiple grupe de participanți",
+      "detail2": "Livrat în română și engleză",
+      "detail3": "Adaptat pentru developeri cu alt background tehnic"
+    },
+    "portfolio": {
+      "title": "Portofoliu Software",
+      "placeholder": "Proiectele software vor fi adăugate în curând. Contactați-ne pentru detalii despre proiectele realizate."
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog — IM Trainer SRL",
+      "description": "Articole despre web development, sfaturi pentru traineri și cursanți, noutăți din lumea IT."
+    },
+    "hero": {
+      "title": "Blog",
+      "subtitle": "Gânduri, tutoriale și perspective din lumea web development și training IT."
+    },
+    "readMore": "Citește mai mult",
+    "category": "Categorie",
+    "noPostsTitle": "Articole în curând",
+    "noPostsDescription": "Pregătim conținut de calitate despre web development, carieră în IT și best practices. Revino curând!",
+    "backToBlog": "Înapoi la Blog",
+    "publishedOn": "Publicat pe"
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact — IM Trainer SRL",
+      "description": "Contactați IM Trainer SRL pentru informații despre cursuri, training corporativ sau proiecte software."
+    },
+    "hero": {
+      "title": "Ia legătura cu noi",
+      "subtitle": "Ai întrebări despre cursuri, training corporativ sau un proiect software? Suntem bucuroși să discutăm."
+    },
+    "form": {
+      "title": "Trimite-ne un mesaj",
+      "name": "Numele tău",
+      "namePlaceholder": "Ion Ionescu",
+      "email": "Adresa de email",
+      "emailPlaceholder": "ion@exemplu.ro",
+      "subject": "Subiect",
+      "subjectPlaceholder": "Training corporativ, proiect software...",
+      "message": "Mesaj",
+      "messagePlaceholder": "Spune-ne mai multe despre ce ai nevoie...",
+      "submit": "Trimite mesajul",
+      "sending": "Se trimite...",
+      "successTitle": "Mesaj trimis!",
+      "successText": "Îți mulțumim pentru mesaj. Te vom contacta în cel mai scurt timp posibil.",
+      "errorText": "A apărut o eroare. Te rugăm să încerci din nou sau să ne contactezi direct."
+    },
+    "info": {
+      "title": "Informații de contact",
+      "company": "IM Trainer SRL",
+      "location": "România",
+      "response": "Răspundem de obicei în cel mult 1 zi lucrătoare.",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
+  },
+  "footer": {
+    "tagline": "Training IT & Dezvoltare Software în România",
+    "pages": "Pagini",
+    "social": "Social",
+    "rights": "Toate drepturile rezervate.",
+    "company": "IM Trainer SRL"
+  },
+  "common": {
+    "learnMore": "Află mai mult",
+    "contactUs": "Contactează-ne",
+    "ourServices": "Serviciile noastre",
+    "backToHome": "Înapoi acasă"
+  }
+}
