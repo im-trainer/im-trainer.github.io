@@ -2,10 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(git add:*)",
-      "Bash(git commit -m ':*)",
-      "Bash(xargs -I{} cp -r {} /Users/nmatei/Products/im-trainer.github.io/.claude/worktrees/nifty-ramanujan/)",
+      "Bash(git commit -m:*)",
+      "Bash(git push:*)",
       "Bash(npm install:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }
