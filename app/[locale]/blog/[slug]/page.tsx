@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
-import { blogPosts, getPostBySlug } from "@/lib/blog";
+import { getAllSlugs, getPostBySlug } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
 
 type Props = {
@@ -12,20 +12,18 @@ type Props = {
 
 export async function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    blogPosts.map((post) => ({ locale, slug: post.slug }))
+    getAllSlugs().map((slug) => ({ locale, slug }))
   );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug, locale);
   if (!post) return {};
-  const title = locale === "ro" ? post.titleRo : post.titleEn;
-  const description = locale === "ro" ? post.excerptRo : post.excerptEn;
   return {
-    title,
-    description,
-    openGraph: { title, description },
+    title: post.title,
+    description: post.excerpt,
+    openGraph: { title: post.title, description: post.excerpt },
   };
 }
 
@@ -36,46 +34,16 @@ function formatDate(dateStr: string, locale: string) {
   );
 }
 
-function renderContent(content: string) {
-  return content
-    .split("\n\n")
-    .map((block, i) => {
-      if (block.startsWith("## ")) {
-        return (
-          <h2 key={i} className="text-2xl font-bold text-slate-900 mt-10 mb-4">
-            {block.slice(3)}
-          </h2>
-        );
-      }
-      if (block.startsWith("- ")) {
-        const items = block.split("\n").filter((l) => l.startsWith("- "));
-        return (
-          <ul key={i} className="list-disc list-inside space-y-1 text-slate-600">
-            {items.map((item, j) => (
-              <li key={j}>{item.slice(2)}</li>
-            ))}
-          </ul>
-        );
-      }
-      return (
-        <p key={i} className="text-slate-600 leading-relaxed">
-          {block}
-        </p>
-      );
-    });
-}
-
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug, locale);
   if (!post) notFound();
 
   const t = await getTranslations({ locale, namespace: "blog" });
 
-  const title = locale === "ro" ? post.titleRo : post.titleEn;
-  const content = locale === "ro" ? post.contentRo : post.contentEn;
+  const title = post.title;
 
   return (
     <>
@@ -109,7 +77,11 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Content */}
       <section className="bg-slate-50 py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-4">{renderContent(content)}</div>
+          <div
+            className="prose prose-slate max-w-none"
+            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+          />
+
           <div className="mt-12 pt-8 border-t border-slate-200">
             <Link
               href={`/${locale}/blog`}
