@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { ArrowRight, CheckCircle2, MapPin, Send } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, MapPin, Send } from "lucide-react";
+
+// The contact form has no backend yet — disable it until a real form is wired.
+const FORM_ENABLED = false;
 
 function GitHubIcon({ size = 16 }: { size?: number }) {
   return (
@@ -81,7 +84,15 @@ export default function ContactPage() {
                   {t("form.title")}
                 </h2>
 
-                {status === "success" ? (
+                {!FORM_ENABLED ? (
+                  <div className="text-center py-10">
+                    <Clock size={48} className="text-sky-400 mx-auto mb-4" />
+                    <h3 className="text-lg font-bold text-slate-900 mb-2">
+                      {t("formDisabled.title")}
+                    </h3>
+                    <p className="text-slate-500 text-sm">{t("formDisabled.text")}</p>
+                  </div>
+                ) : status === "success" ? (
                   <div className="text-center py-10">
                     <CheckCircle2 size={48} className="text-emerald-400 mx-auto mb-4" />
                     <h3 className="text-lg font-bold text-slate-900 mb-2">
@@ -206,7 +217,7 @@ export default function ContactPage() {
                     <span>github.com/nmatei</span>
                   </a>
                   <a
-                    href="https://www.linkedin.com/company/im-trainer"
+                    href="https://www.linkedin.com/in/nicolaematei"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-sm text-slate-600 hover:text-slate-900 transition-colors"

@@ -242,11 +242,15 @@
       "successText": "Thank you for your message. We will get back to you as soon as possible.",
       "errorText": "An error occurred. Please try again or contact us directly."
     },
+    "formDisabled": {
+      "title": "Contact form coming soon",
+      "text": "We're still setting up our contact form. In the meantime, reach out to us on LinkedIn or GitHub."
+    },
     "info": {
       "title": "Contact Information",
       "company": "IM Trainer SRL",
       "location": "Romania",
-      "response": "We usually reply within 1 business day.",
+      "response": "We deliver IT training — corporate and public web-development courses — and build custom software and web applications.",
       "linkedin": "LinkedIn",
       "github": "GitHub"
     }

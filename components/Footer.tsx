@@ -94,7 +94,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.linkedin.com/company/im-trainer"
+                  href="https://www.linkedin.com/in/nicolaematei"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
