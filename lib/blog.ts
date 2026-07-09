@@ -14,11 +14,30 @@ export interface BlogPostMeta {
   title: string;
   excerpt: string;
   date: string; // ISO "YYYY-MM-DD"
-  category: string;
+  tags: string[];
 }
 
 export interface BlogPost extends BlogPostMeta {
   contentHtml: string;
+}
+
+/**
+ * Normalize frontmatter tags into a clean string array.
+ * Accepts `tags` as a YAML array or a comma-separated string, and falls back
+ * to the legacy single `category` field so older posts keep working.
+ */
+function normalizeTags(data: Record<string, unknown>): string[] {
+  const { tags, category } = data as { tags?: unknown; category?: unknown };
+  if (Array.isArray(tags)) {
+    return tags.map((t) => String(t).trim()).filter(Boolean);
+  }
+  if (typeof tags === "string" && tags.trim()) {
+    return tags.split(",").map((t) => t.trim()).filter(Boolean);
+  }
+  if (typeof category === "string" && category.trim()) {
+    return [category.trim()];
+  }
+  return [];
 }
 
 function readAllFiles(): { slug: string; locale: string; file: string }[] {
@@ -41,7 +60,7 @@ function readMeta(slug: string, locale: string, file: string): BlogPostMeta {
     title: String(data.title ?? slug),
     excerpt: String(data.excerpt ?? ""),
     date: String(data.date ?? ""),
-    category: String(data.category ?? ""),
+    tags: normalizeTags(data),
   };
 }
 
@@ -56,6 +75,15 @@ export function getAllPosts(locale: string): BlogPostMeta[] {
 /** Unique slugs across all languages (for generateStaticParams). */
 export function getAllSlugs(): string[] {
   return [...new Set(readAllFiles().map((f) => f.slug))];
+}
+
+/** All unique tags used by posts in a locale, sorted alphabetically (for filtering). */
+export function getAllTags(locale: string): string[] {
+  const set = new Set<string>();
+  for (const post of getAllPosts(locale)) {
+    for (const tag of post.tags) set.add(tag);
+  }
+  return [...set].sort((a, b) => a.localeCompare(b));
 }
 
 /** A single localized post with rendered HTML, or undefined if missing. */
@@ -80,7 +108,7 @@ export async function getPostBySlug(
     title: String(data.title ?? slug),
     excerpt: String(data.excerpt ?? ""),
     date: String(data.date ?? ""),
-    category: String(data.category ?? ""),
+    tags: normalizeTags(data),
     contentHtml: processed.toString(),
   };
 }

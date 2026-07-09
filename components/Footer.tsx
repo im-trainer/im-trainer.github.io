@@ -124,7 +124,7 @@ export default function Footer() {
             &copy; {year} {t("company")}. {t("rights")}
           </span>
           <span className="font-mono text-slate-600">
-            &lt;built with Next.js /&gt;
+            &lt;{t("builtWith")} /&gt;
           </span>
         </div>
       </div>

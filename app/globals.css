@@ -10,6 +10,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Blog article links: turn blue on hover, matching the blog title hover (sky-600). */
+.prose a {
+  transition: color 0.15s ease;
+}
+
+.prose a:hover {
+  color: var(--color-sky-600); /* matches the blog title hover */
+}
+
 body {
   background-color: #f8fafc;
   color: #0f172a;

@@ -57,16 +57,21 @@ export default async function BlogPostPage({ params }: Props) {
             <ArrowLeft size={15} />
             {t("backToBlog")}
           </Link>
-          <div className="flex items-center gap-3 text-xs text-slate-400 mb-4">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-slate-400 mb-4">
             <span className="flex items-center gap-1">
               <Calendar size={12} />
               <span className="font-medium">{t("publishedOn")}</span>{" "}
               {formatDate(post.date, locale)}
             </span>
-            <span className="flex items-center gap-1">
-              <Tag size={12} />
-              {post.category}
-            </span>
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center gap-1 rounded-full bg-sky-50 text-sky-700 px-2.5 py-0.5 font-medium"
+              >
+                <Tag size={11} />
+                {tag}
+              </span>
+            ))}
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
             {title}

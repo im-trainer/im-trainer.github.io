@@ -23,7 +23,7 @@ The loader (`lib/blog.ts`) reads these at build time, so **adding a post means c
    And shared across both languages:
    - `slug` — **always English**, kebab-case, ASCII, no dots (e.g. `intro-to-typescript`), even for a Romanian article. The slug is shared across both languages and forms the URL: `/{locale}/blog/{slug}` (same convention as the site's route keys, e.g. `/ro/clients`).
    - `date` — `YYYY-MM-DD`. Default to today if the user doesn't specify.
-   - `category` — free-form string shown as-is (e.g. `Web Tips`, `Career`, `Course Notes`). May differ per language if the user wants a translated label; otherwise keep it identical.
+   - `tags` — a YAML array of free-form strings, each shown as its own pill (e.g. `["Git", "Dev Tools"]`, `["Career"]`). Kept identical across languages unless the user wants translated labels. The legacy single-string `category:` field is still supported for backward compatibility (rendered as one tag), but prefer `tags` for new posts. Tags are the basis for future filtering, so reuse existing tag names where possible — see `getAllTags(locale)` in `lib/blog.ts`.
 
    If the user provides only one language, draft the other by translating (RO is the site's default language), and confirm the translation with them before writing.
 
@@ -36,7 +36,7 @@ The loader (`lib/blog.ts`) reads these at build time, so **adding a post means c
    title: "Title in this language"
    excerpt: "One or two sentence summary."
    date: "2026-07-09"
-   category: "Web Tips"
+   tags: ["Web Tips"]
    ---
 
    ## First heading

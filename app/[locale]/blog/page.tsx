@@ -77,11 +77,20 @@ export default async function BlogPage({ params }: Props) {
                           <Calendar size={12} />
                           {formatDate(post.date, locale)}
                         </span>
-                        <span className="flex items-center gap-1">
-                          <Tag size={12} />
-                          {post.category}
-                        </span>
                       </div>
+                      {post.tags.length > 0 && (
+                        <div className="flex flex-wrap items-center gap-1.5 mb-3">
+                          {post.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="inline-flex items-center gap-1 rounded-full bg-sky-50 text-sky-700 px-2.5 py-0.5 text-xs font-medium"
+                            >
+                              <Tag size={10} />
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                       <h2 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-sky-600 transition-colors leading-snug">
                         {title}
                       </h2>
