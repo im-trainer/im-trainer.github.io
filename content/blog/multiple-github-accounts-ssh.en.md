@@ -56,6 +56,22 @@ git config --global url."git@github.work:im-trainer/".insteadOf "git@github.com:
 
 Now you can copy clone URLs straight from GitHub without editing them.
 
+To check which rewrite rules are active:
+
+```bash
+# List every insteadOf rule
+git config --global --get-regexp 'url\..*\.insteadof'
+
+# Or just dump all url.* settings
+git config --global --get-regexp '^url\.'
+```
+
+To remove a rule later:
+
+```bash
+git config --global --unset url."git@github.work:im-trainer/".insteadOf
+```
+
 ## 5. ✅ Test the connections
 
 ```bash

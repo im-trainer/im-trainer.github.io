@@ -56,6 +56,22 @@ git config --global url."git@github.work:im-trainer/".insteadOf "git@github.com:
 
 Acum poți copia URL-urile de clone direct de pe GitHub, fără să le editezi.
 
+Ca să vezi ce reguli de rescriere sunt active:
+
+```bash
+# Listează toate regulile insteadOf
+git config --global --get-regexp 'url\..*\.insteadof'
+
+# Sau afișează toate setările url.*
+git config --global --get-regexp '^url\.'
+```
+
+Ca să ștergi o regulă mai târziu:
+
+```bash
+git config --global --unset url."git@github.work:im-trainer/".insteadOf
+```
+
 ## 5. ✅ Testează conexiunile
 
 ```bash
