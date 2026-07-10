@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#111f3d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Teal glow top-right -->
+  <circle cx="1180" cy="-40" r="340" fill="#0EA5E9" opacity="0.12"/>
+  <!-- Amber warmth bottom-right -->
+  <circle cx="1130" cy="600" r="220" fill="#F59E0B" opacity="0.06"/>
+
+  <!-- Faint code-snippet watermark (the "classroom meets code" motif) -->
+  <g font-family="Menlo, 'DejaVu Sans Mono', monospace" font-size="26" opacity="0.10" fill="#7DD3FC">
+    <text x="770" y="205">const trainer = {</text>
+    <text x="800" y="248">focus:  ['HTML','CSS','JS'],</text>
+    <text x="800" y="291">stack:  ['React','Next.js'],</text>
+    <text x="800" y="334">deliver:['ro','en'],</text>
+    <text x="800" y="377">format: ['class','online'],</text>
+    <text x="770" y="420">};</text>
+  </g>
+
+  <!-- Kicker -->
+  <text x="80" y="130" font-family="Menlo, 'DejaVu Sans Mono', monospace" font-size="26"
+        letter-spacing="4" fill="#38BDF8" font-weight="bold">&lt;/&gt; IM TRAINER SRL</text>
+
+  <!-- Headline -->
+  <text x="78" y="250" font-family="Arial, Helvetica, sans-serif" font-size="76"
+        font-weight="bold" fill="#F8FAFC">IT Training &amp;</text>
+  <text x="78" y="342" font-family="Arial, Helvetica, sans-serif" font-size="76"
+        font-weight="bold" fill="url(#accent)">Software Development</text>
+
+  <!-- Amber accent bar -->
+  <rect x="82" y="378" width="96" height="7" rx="3.5" fill="#F59E0B"/>
+
+  <!-- Subheadline -->
+  <text x="80" y="452" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#94A3B8">
+    Corporate &amp; public web-dev courses. Custom software.
+  </text>
+  <text x="80" y="496" font-family="Arial, Helvetica, sans-serif" font-size="31" fill="#94A3B8">
+    Based in Romania · delivered in RO / EN.
+  </text>
+
+  <!-- Footer wordmark -->
+  <text x="80" y="572" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="bold" fill="#F8FAFC">
+    IM Trainer <tspan fill="#38BDF8" font-family="Menlo, monospace">·</tspan> <tspan fill="#64748B" font-weight="normal" font-size="27">im-trainer.github.io</tspan>
+  </text>
+</svg>

@@ -95,9 +95,15 @@ Root `/` redirects to the browser's preferred language or defaults to RO.
 
 - Article list page: date, title, short excerpt, language badge (EN / RO)
 - Article detail: `/blog/[slug]`
-- Markdown or MDX content source
-- Initially empty or 1–2 placeholder/intro articles
-- Categories TBD (e.g. Web Tips, Course Notes, Career Advice)
+- Content source: **Markdown**, two files per post (`{slug}.ro.md` + `{slug}.en.md`) under `content/blog/`, loaded at build time by `lib/blog.ts`. Posts are added via the `add-blog-post` skill — no code changes.
+- Tagging: free-form `tags` array in frontmatter, each shown as a pill (legacy single `category` still supported). Reuse existing tag names; tags are the basis for future filtering.
+
+**Editorial scope — the blog is a lead magnet, not a general tech blog.** Every post targets one of two audiences (or both), always in the author's practical, jargon-free voice:
+
+- **Audience A — Training (primary):** aspiring/early-career web developers, course participants & alumni (FastTrackIT, Transilvania IT), corporate devs from non-web backgrounds, and prospective training clients. Pillars: web-dev fundamentals & how-tos, dev tools & workflow (Git, SSH, terminal), career/learning advice, course notes.
+- **Audience B — Software development (secondary):** founders, product owners, and technical decision-makers evaluating a dev partner. Pillars: how we build web apps/sites, engineering trade-offs from real work, tech choices explained for decision-makers, lightweight "how we'd build X" pieces — credibility-building, never a sales pitch.
+
+Out of scope: topics unrelated to web dev / teaching / how we build software, and hard-sell marketing. See the `add-blog-post` skill for the full editorial checklist.
 
 ### 4.6 Contact (`/contact`)
 
@@ -148,16 +154,18 @@ The design bridges two worlds — the precision of software engineering and the 
 
 Every page must include:
 
-- Unique `<title>` and `<meta name="description">` per page, per language
-- Open Graph tags: `og:title`, `og:description`, `og:image`, `og:url`, `og:type`
-- Twitter Card tags
+- ✅ Unique `<title>` and `<meta name="description">` per page, per language
+- ✅ Open Graph tags: `og:title`, `og:description`, `og:image` (`public/og.png`, 1200×630), `og:url`, `og:type`, `og:site_name`, `og:locale`
+- ✅ Twitter Card tags (`summary_large_image`)
 - JSON-LD structured data:
-  - `Organization` (IM Trainer SRL, url, logo, contactPoint)
-  - `WebPage` per page
-- `<link rel="alternate" hreflang="ro" ...>` and `hreflang="en"` on every page
-- Canonical URL (`<link rel="canonical">`)
-- `sitemap.xml` — auto-generated at build time listing all routes × languages
-- `robots.txt` — allow all, point to sitemap
+  - ✅ `Organization` + `WebSite` (site-wide)
+  - ✅ `BlogPosting` on articles (`WebPage` per page not added — lower value)
+- ✅ `<link rel="alternate" hreflang="ro" | "en" | "x-default">` on every page
+- ✅ Canonical URL (`<link rel="canonical">`)
+- ✅ `sitemap.xml` — auto-generated at build (`app/sitemap.ts`), all routes × languages + posts, with hreflang alternates
+- ✅ `robots.txt` — allow all, points to sitemap (`app/robots.ts`)
+
+Implemented via `lib/seo.ts` (`buildMetadata`, JSON-LD builders), `components/JsonLd.tsx`, `app/sitemap.ts`, `app/robots.ts`. See CLAUDE.md → "SEO (implemented)".
 
 ---
 
@@ -218,9 +226,9 @@ Every page must include:
 |---|---|---|
 | 1 | LinkedIn profile URL | IM Trainer SRL |
 | 2 | Logo / brand icon direction | IM Trainer SRL + designer |
-| 3 | OG image design | IM Trainer SRL + designer |
+| 3 | ~~OG image design~~ — done (`public/og.png`, branded 1200×630); redesign optional | IM Trainer SRL + designer |
 | 4 | Real testimonial quotes | IM Trainer SRL |
 | 5 | Portfolio project entries | Nicolae (future update) |
-| 6 | Blog initial articles | IM Trainer SRL |
+| 6 | ~~Blog initial articles~~ — done (initial web-dev & Git posts published) | IM Trainer SRL |
 | 7 | Contact email address | IM Trainer SRL |
 | 8 | Formspree account / mailto address | IM Trainer SRL |

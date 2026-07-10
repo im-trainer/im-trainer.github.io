@@ -5,6 +5,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import { getAllSlugs, getPostBySlug } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
+import { buildMetadata, blogPostingLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -20,11 +22,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const post = await getPostBySlug(slug, locale);
   if (!post) return {};
-  return {
+  return buildMetadata({
+    locale,
+    path: `/blog/${slug}`,
     title: post.title,
     description: post.excerpt,
-    openGraph: { title: post.title, description: post.excerpt },
-  };
+    type: "article",
+    article: {
+      publishedTime: post.date,
+      modifiedTime: post.date,
+      tags: post.tags,
+    },
+  });
 }
 
 function formatDate(dateStr: string, locale: string) {
@@ -47,6 +56,16 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={blogPostingLd({
+          locale,
+          slug,
+          title: post.title,
+          excerpt: post.excerpt,
+          date: post.date,
+          tags: post.tags,
+        })}
+      />
       {/* Hero */}
       <section className="bg-white py-12 border-b border-slate-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

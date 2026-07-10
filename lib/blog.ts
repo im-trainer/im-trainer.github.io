@@ -40,6 +40,20 @@ function normalizeTags(data: Record<string, unknown>): string[] {
   return [];
 }
 
+/**
+ * Make external links (absolute http/https URLs) open in a new tab, with
+ * `rel="noopener"` to block `window.opener` hijacking. We intentionally omit
+ * `noreferrer` so partner/course sites still see referral traffic from us.
+ * Internal links are relative (`/ro/…`, `/en/…`) so they don't match and keep
+ * opening in the same tab.
+ */
+function openExternalLinksInNewTab(html: string): string {
+  return html.replace(
+    /<a href="(https?:\/\/[^"]+)"/g,
+    '<a href="$1" target="_blank" rel="noopener"'
+  );
+}
+
 function readAllFiles(): { slug: string; locale: string; file: string }[] {
   if (!fs.existsSync(BLOG_DIR)) return [];
   return fs
@@ -109,6 +123,6 @@ export async function getPostBySlug(
     excerpt: String(data.excerpt ?? ""),
     date: String(data.date ?? ""),
     tags: normalizeTags(data),
-    contentHtml: processed.toString(),
+    contentHtml: openExternalLinksInNewTab(processed.toString()),
   };
 }

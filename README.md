@@ -26,7 +26,7 @@ IM Trainer SRL delivers corporate and public IT training as well as custom softw
 | `/about` | About IM Trainer SRL |
 | `/services` | Training and software services |
 | `/clients` | Past clients and portfolio |
-| `/blog` | Articles and course notes |
+| `/blog` | Articles for two audiences: web-dev learners/training clients (primary) and prospective software-dev clients (secondary) — always in a practical, jargon-free voice |
 | `/contact` | Contact form and social links |
 
 ## Development

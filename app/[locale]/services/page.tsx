@@ -11,17 +11,19 @@ import {
   Lightbulb,
   Monitor,
 } from "lucide-react";
+import { buildMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "services.meta" });
-  return {
+  return buildMetadata({
+    locale,
+    path: "/services",
     title: t("title"),
     description: t("description"),
-    openGraph: { title: t("title"), description: t("description") },
-  };
+  });
 }
 
 const serviceConfig = [

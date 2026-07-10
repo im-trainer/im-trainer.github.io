@@ -36,7 +36,14 @@ Each has YAML frontmatter (`title`, `excerpt`, `date` "YYYY-MM-DD", `category`) 
 
 **To add a post, use the `add-blog-post` skill** (`.claude/skills/add-blog-post/`) — it creates the two files; no code edits needed. The `blog` namespace in `messages/*.json` is page chrome only, not article content.
 
-## Known gaps (from requirements.md, not yet built)
-- No `sitemap.ts` / `robots.ts` (SEO spec calls for them).
+## SEO (implemented)
+- `app/sitemap.ts` + `app/robots.ts` generate `sitemap.xml` / `robots.txt` at build. Both need `export const dynamic = "force-static"` under `output: export`. Sitemap lists all routes × locales + blog posts, each with `xhtml:link` hreflang alternates.
+- `lib/seo.ts` — `buildMetadata({ locale, path, title, description, type?, article? })` is the single source for per-page canonical + hreflang (`ro`/`en`/`x-default`) + Open Graph + Twitter Card. Every page's `generateMetadata` returns it. Also holds the JSON-LD builders (`organizationLd`, `webSiteLd`, `blogPostingLd`).
+- `components/JsonLd.tsx` renders `<script type="application/ld+json">`. `Organization` + `WebSite` are injected site-wide in `app/[locale]/layout.tsx`; `BlogPosting` on each article page.
+- Contact is `"use client"` so it can't export metadata — `app/[locale]/contact/layout.tsx` (server) supplies its SEO tags.
+- `og:image` / `twitter:image` → `public/og.png` (1200×630), wired via `OG_IMAGE` in `lib/seo.ts` and also used as `BlogPosting.image`. Source lives at `design/og.svg`; regenerate with `rsvg-convert -w 1200 -h 630 design/og.svg -o public/og.png` if the design changes.
+- When adding a page, return `buildMetadata(...)` from its `generateMetadata` and add its path to `STATIC_PATHS` in `app/sitemap.ts`.
+
+## Known gaps
+- **`<html lang>` is `"ro"` in static HTML for every route** — the root layout sits above `[locale]` so can't read the locale; `LocaleHtml` corrects it to `en` client-side after hydration.
 - Contact form is client-only (no Formspree/backend wired yet).
-- No JSON-LD structured data or `hreflang` alternate tags yet.

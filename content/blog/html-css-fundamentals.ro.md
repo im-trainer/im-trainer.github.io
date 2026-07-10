@@ -1,26 +1,49 @@
 ---
-title: "HTML și CSS: De ce fundametele contează cel mai mult"
-excerpt: "Mulți cursanți vor să sară direct la framework-uri. Iată de ce HTML și CSS solid rămân cea mai bună investiție pe termen lung."
+title: "HTML și CSS: De ce fundamentele contează cel mai mult"
+excerpt: "Mulți cursanți vor să sară direct la framework-uri. Iată de ce HTML și CSS solid rămân cea mai bună investiție pe termen lung — și ce înseamnă, de fapt, „solid”."
 date: "2025-02-10"
-category: "Web Tips"
+tags: ["HTML & CSS", "Web Tips"]
 ---
 
-## Tentația de a sări peste fundamente
+Una dintre cele mai frecvente greșeli pe care le văd la cei care încep este dorința de a sări direct la [React](https://react.dev), [Vue](https://vuejs.org) sau framework-ul lunii 😅. Înțeleg motivul — framework-urile par mai interesante și mai relevante în anunțurile de angajare. Dar developerii care avansează cel mai repede mai târziu sunt aproape mereu cei care au luat [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) și [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) în serios de la început.
 
-Unul dintre cele mai comune greșeli ale celor care încep să învețe web development este dorința de a sări direct la React, Vue sau alt framework popular. Înțeleg motivul — framework-urile par mai interesante și mai relevante pe piața muncii.
+## 🧱 Ce se întâmplă fără fundamente
 
-## Dar ce se întâmplă fără fundamente
+Fără o înțelegere reală a HTML semantic și a layout-ului CSS, te lovești mereu de același zid: copiezi bucăți de cod fără să știi ce fac, te lupți cu bug-uri de CSS pe care nu le poți diagnostica și depinzi complet de framework pentru orice — inclusiv pentru lucruri pe care browser-ul le face deja gratuit.
 
-Fără o înțelegere solidă a HTML semantic și a CSS layout, vei întâmpina probleme neașteptate la fiecare pas. Vei copia cod fără să înțelegi ce face, vei lupta cu bug-uri de CSS pe care nu le poți diagnostica și vei depinde complet de framework pentru orice.
+## 🎯 Ce înseamnă, de fapt, „fundamente solide”
 
-## Ce înseamnă fundamente solide
+Concret, acestea sunt lucrurile pe care merită să le stăpânești înainte de orice framework:
 
-- Înțelegerea structurii HTML semantic
-- Box model și cum afectează layout-ul
-- Flexbox și Grid fără ajutor extern
-- CSS custom properties (variabile)
-- Responsive design fără framework-uri
+- **HTML semantic** — să folosești `header`, `nav`, `main`, `article`, `button` pentru ce înseamnă, nu `div` pentru tot.
+- **Box model** — cum se combină `margin`, `border`, `padding` și `content` pentru a forma dimensiunea unui element.
+- **Flexbox și Grid** — să aranjezi o pagină fără să apelezi la o bibliotecă.
+- **CSS custom properties** — variabile reutilizabile pentru culori, spațiere și teme.
+- **Responsive design** — adaptarea la dimensiunea ecranului cu media queries, fără framework.
 
-## Investiția pe termen lung
+## 💡 Un exemplu: centrarea, pe vremuri vs. acum
 
-Un developer care înțelege profund HTML și CSS va fi întotdeauna mai eficient decât unul care știe React dar nu înțelege ce face browser-ul. Investiția în fundamente se amortizează rapid.
+Ani la rând lumea căuta pe Google „how to center a div” și lipea formule magice. Odată ce înțelegi Flexbox, sunt trei linii pe care chiar le înțelegi:
+
+```css
+.card {
+  display: flex;
+  align-items: center;    /* vertical */
+  justify-content: center; /* orizontal */
+}
+```
+
+Asta e diferența pe care o fac fundamentele: nu memorezi un truc, ci știi *de ce* funcționează — ca să îl poți adapta când se schimbă layout-ul.
+
+## 📈 Investiția pe termen lung
+
+Un developer care înțelege profund HTML și CSS va fi mereu înaintea unuia care știe React, dar nu știe ce face browser-ul dedesubt. Framework-ul se schimbă la câțiva ani; box model-ul nu. Investiția în fundamente se amortizează rapid și continuă să dea roade.
+
+> **AI dă cele mai bune rezultate atunci când este însoțit de cunoștințe solide.** Investește în învățare ca să-i deblochezi întregul potențial. AI nu este un înlocuitor pentru oameni — este un instrument care amplifică abilitățile umane.
+>
+> — [Nicolae Matei](https://nmatei.github.io)
+
+## 📚 Citește mai departe
+
+- [De ce să înveți web development în 2025](/ro/blog/why-learn-web-development) — dacă încă te decizi dacă să faci pasul.
+- [Git pentru începători: primele comenzi](/ro/blog/git-basics-for-beginners) — celălalt lucru fundamental de care are nevoie orice developer.

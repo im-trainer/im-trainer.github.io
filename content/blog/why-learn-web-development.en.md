@@ -1,22 +1,45 @@
 ---
 title: "Why Learn Web Development in 2025"
-excerpt: "Web development remains one of the most in-demand skills in the job market. Find out why now is a great time to make the leap."
+excerpt: "Web development is still one of the most in-demand skills out there. Here's why it's worth learning — and a concrete first step you can take today."
 date: "2025-01-15"
-category: "Career"
+tags: ["Career"]
 ---
 
-## Why web development?
+Every so often someone asks me whether it's "too late" to get into web development. It isn't 🙂. The demand is still there, the barrier to entry is genuinely low, and you can see results on day one. Here's the honest case for learning it — and where to actually start.
 
-Web development remains one of the most dynamic and sought-after skills in the global job market. Regardless of industry, companies need a digital presence, internal applications, and web solutions — and this demand shows no signs of slowing down.
+## 🌍 Why web development, still
 
-## What you actually learn
+Regardless of industry, companies need a digital presence, internal tools, and web solutions — and that demand shows no sign of slowing. The web is also the most universal platform there is: one set of skills runs on every phone, laptop, and browser, with nothing to install.
 
-A good web development course doesn't just teach you HTML or JavaScript. It teaches you to think logically, solve problems, and build functional things from scratch. These skills are transferable to any technical role.
+## 🧠 What you actually learn
 
-## Where you can go
+A good course doesn't just hand you [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) or [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) syntax. It teaches you to think logically, break problems down, and build something functional from nothing. Those skills transfer to *any* technical role — they outlast any single language or framework.
 
-Whether you want to become a frontend developer, a full-stack developer, or simply want to better understand how the internet works — web development is an excellent starting point.
+## 🚀 A concrete first step
 
-## Conclusion
+You don't need a bootcamp to start. Create a file called `index.html`, paste this in, and open it in your browser:
 
-There's no perfect moment to learn something new. But if you're curious about web development, now is as good a time as any. Start with the fundamentals — HTML, CSS, JavaScript — and build from there.
+```html
+<!doctype html>
+<html>
+  <body>
+    <h1>Hello, web!</h1>
+    <button onclick="alert('It works!')">Click me</button>
+  </body>
+</html>
+```
+
+That's a real, working web page — structure (HTML), and a tiny bit of behavior (JavaScript). From here, the path is: **HTML → CSS → JavaScript**, then a framework once the fundamentals feel natural.
+
+## 🎯 Where it leads
+
+Frontend developer, full-stack developer, or simply someone who understands how the internet works — web development is an excellent starting point for all of them. There's no perfect moment to begin. If you're curious, now is as good as any: start with the fundamentals and build from there.
+
+> **AI performs best when paired with strong knowledge.** Invest in learning to unlock its full potential. AI is not a replacement for humans — it's a tool to enhance human capabilities.
+>
+> — [Nicolae Matei](https://nmatei.github.io)
+
+## 📚 Read next
+
+- [HTML & CSS: Why the Fundamentals Matter Most](/en/blog/html-css-fundamentals) — where to focus first, and why.
+- [Git Basics: Your First Commands](/en/blog/git-basics-for-beginners) — the tool you'll use to save and share every project.

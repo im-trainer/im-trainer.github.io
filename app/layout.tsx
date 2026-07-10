@@ -19,11 +19,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Root layout must own <html> and <body>.
-// suppressHydrationWarning allows the locale layout to update lang client-side.
+// Root layout must own <html> and <body>. It sits above the [locale] segment,
+// so it can't know the request locale — we default `lang` to the site default
+// ("ro") and let LocaleHtml correct it to "en" client-side on English routes.
+// suppressHydrationWarning allows that client-side lang update without warnings.
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
+      lang="ro"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
     >

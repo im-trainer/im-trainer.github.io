@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildMetadata } from "@/lib/seo";
 import { ArrowRight, CheckCircle2, BookOpen, Target, Award } from "lucide-react";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -8,11 +9,12 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about.meta" });
-  return {
+  return buildMetadata({
+    locale,
+    path: "/about",
     title: t("title"),
     description: t("description"),
-    openGraph: { title: t("title"), description: t("description") },
-  };
+  });
 }
 
 const skills = [
