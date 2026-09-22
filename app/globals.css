@@ -38,49 +38,102 @@ body {
    `!important` needed.
    --------------------------------------------------------------------------- */
 
-/* The wrapper carries `position: relative`, not the `<pre>`: typography gives
-   `pre` `overflow-x: auto`, so a button anchored there scrolls away with long
-   lines. The vertical margin moves here too, so article spacing is unchanged. */
+/* One rounded dark panel: the bar and the <pre> share a background, so the
+   block reads as a single surface (no divider). The vertical margin moves off
+   `pre` onto the wrapper, so article spacing is unchanged. */
 .prose .code-block {
   position: relative;
   margin-top: 1.7142857em;
   margin-bottom: 1.7142857em;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--tw-prose-pre-bg);
 }
 
 .prose .code-block pre {
   margin: 0;
+  border-radius: 0;
+  padding-top: 0.5rem;
 }
 
-.prose .code-block button[data-code-copy] {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+.prose .code-block__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.625rem 0 1.1428571em;
+  font-size: 0.8125em;
+  line-height: 1;
+}
+
+/* The site's logo mark, same glyph and color as the header wordmark. */
+.prose .code-block__mark {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-weight: 700;
+  color: var(--color-sky-400);
+  letter-spacing: -0.05em;
+}
+
+.prose .code-block__lang {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-weight: 500;
+  color: var(--color-slate-300);
+}
+
+/* `margin-left: auto` pushes the button to the right edge whether or not the
+   language name is present (untagged fences render an empty label). */
+.prose .code-block__copy {
+  margin-left: auto;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.375rem;
-  border: 1px solid var(--color-slate-700);
   border-radius: 0.375rem;
-  background-color: var(--color-slate-800);
   color: var(--color-slate-400);
   cursor: pointer;
-  transition: opacity 0.15s ease, color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
 }
 
-.prose .code-block button[data-code-copy]:hover {
+.prose .code-block__copy:hover,
+.prose .code-block__copy:focus-visible {
   color: var(--color-slate-100);
+  background-color: #ffffff1a;
 }
 
-/* Hidden until hover on pointer devices; always visible on touch, where there
-   is no hover state to reveal it. */
-@media (hover: hover) {
-  .prose .code-block button[data-code-copy] {
-    opacity: 0;
-  }
+/* Tooltip. The text comes from `data-tooltip`, which CodeCopy.tsx keeps in the
+   active locale — a CSS `content` string is not read by screen readers, so the
+   button's `aria-label` stays the single announced name. */
+.prose .code-block__copy::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: calc(100% + 0.375rem);
+  right: 0;
+  z-index: 1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  background-color: var(--color-slate-700);
+  color: var(--color-slate-100);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
 
-  .prose .code-block:hover button[data-code-copy],
-  .prose .code-block button[data-code-copy]:focus-visible {
-    opacity: 1;
+.prose .code-block__copy:hover::after,
+.prose .code-block__copy:focus-visible::after {
+  opacity: 1;
+}
+
+/* Touch devices have no hover, so a tooltip would only ever flash on tap. */
+@media (hover: none) {
+  .prose .code-block__copy::after {
+    content: none;
   }
 }
 

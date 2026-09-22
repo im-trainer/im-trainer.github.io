@@ -217,7 +217,9 @@
     "backToBlog": "Back to Blog",
     "publishedOn": "Published on",
     "copyCode": "Copy code block",
-    "codeCopied": "Code copied"
+    "codeCopied": "Code copied",
+    "copyCodeShort": "Copy",
+    "codeCopiedShort": "Copied!"
   },
   "contact": {
     "meta": {

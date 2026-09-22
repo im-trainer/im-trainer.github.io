@@ -217,7 +217,9 @@
     "backToBlog": "Înapoi la Blog",
     "publishedOn": "Publicat pe",
     "copyCode": "Copiază blocul de cod",
-    "codeCopied": "Cod copiat"
+    "codeCopied": "Cod copiat",
+    "copyCodeShort": "Copiază",
+    "codeCopiedShort": "Copiat!"
   },
   "contact": {
     "meta": {

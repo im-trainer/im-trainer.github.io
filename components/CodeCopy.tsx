@@ -19,13 +19,17 @@ function CopyButton({ slot }: { slot: HTMLElement }) {
   useEffect(() => () => clearTimeout(timer.current), []);
 
   const label = copied ? t("codeCopied") : t("copyCode");
+  const tooltip = copied ? t("codeCopiedShort") : t("copyCodeShort");
 
-  // The label lives on the slot, not on our portal content: the slot IS the
-  // <button>. Keeping aria-label in sync with the icon means the state change
-  // is announced, not just drawn.
+  // Both live on the slot, not on our portal content: the slot IS the <button>.
+  // `aria-label` is the long form so the state change is announced rather than
+  // only drawn; `data-tooltip` is the short form the CSS renders on hover, and
+  // it is what keeps the tooltip out of the copied text and out of the a11y
+  // tree (a CSS `content` string is not announced twice).
   useEffect(() => {
     slot.setAttribute("aria-label", label);
-  }, [slot, label]);
+    slot.setAttribute("data-tooltip", tooltip);
+  }, [slot, label, tooltip]);
 
   const copy = useCallback(async () => {
     // `navigator.clipboard` is undefined outside a secure context (plain http).
@@ -33,8 +37,9 @@ function CopyButton({ slot }: { slot: HTMLElement }) {
 
     // Read the text back out of the DOM rather than rebuilding it: highlighting
     // has split the code into dozens of spans, and the DOM is the only source
-    // that is guaranteed to match what the reader actually sees.
-    const code = slot.parentElement?.querySelector("pre")?.textContent;
+    // that is guaranteed to match what the reader actually sees. Scoped to the
+    // <pre>, so the bar's language name never ends up in the clipboard.
+    const code = slot.closest(".code-block")?.querySelector("pre")?.textContent;
     if (!code) return;
 
     try {
