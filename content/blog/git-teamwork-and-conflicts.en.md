@@ -49,7 +49,7 @@ git stash && git checkout master && git pull --rebase && git stash pop
 
 Sooner or later, two people change the same lines and Git can't decide who wins 🙈 — that's a conflict. Git marks the spot in the file like this:
 
-```
+```diff
 <<<<<<< HEAD
 your version
 =======

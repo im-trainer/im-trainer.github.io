@@ -28,7 +28,7 @@ ssh-keygen -t ed25519 -C "work@example.com" -f ~/.ssh/id_ed25519_work
 
 View the current config with `cat ~/.ssh/config`, then add:
 
-```
+```ssh-config
 # Work key for the im-trainer org
 Host github.work
   HostName github.com
@@ -82,7 +82,8 @@ ssh -T github.work          # Hi <your-work-username>!
 ## 6. 📥 Clone examples
 
 ```bash
-# Work org (im-trainer) — insteadOf rewrites it automatically, copy the URL as-is
+# Work org (im-trainer)
+#  — insteadOf rewrites it automatically, copy the URL as-is
 git clone git@github.com:im-trainer/some-repo.git
 
 # Personal repo — no rewrite needed
@@ -103,10 +104,10 @@ GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519_work -o IdentitiesOnly=yes" git push
 
 ## 📋 The result
 
-| Org               | Key used                                |
-| ----------------- | --------------------------------------- |
-| `im-trainer/*`    | `id_ed25519_work` (auto via insteadOf)  |
-| `nmatei/*` or any other | `id_rsa` (personal, fallback)     |
+| Org                     | Key used                               |
+| ----------------------- | -------------------------------------- |
+| `im-trainer/*`          | `id_ed25519_work` (auto via insteadOf) |
+| `nmatei/*` or any other | `id_rsa` (personal, fallback)          |
 
 Set this up once and you'll forget it's even there — the right identity is always used.
 

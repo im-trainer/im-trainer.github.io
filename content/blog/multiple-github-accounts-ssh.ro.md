@@ -28,7 +28,7 @@ ssh-keygen -t ed25519 -C "work@example.com" -f ~/.ssh/id_ed25519_work
 
 Vezi configurația actuală cu `cat ~/.ssh/config`, apoi adaugă:
 
-```
+```ssh-config
 # Cheia de serviciu pentru organizația im-trainer
 Host github.work
   HostName github.com
@@ -82,7 +82,8 @@ ssh -T github.work          # Hi <username-ul-tau-de-serviciu>!
 ## 6. 📥 Exemple de clone
 
 ```bash
-# Organizația de serviciu (im-trainer) — insteadOf rescrie automat, copiază URL-ul ca atare
+# Organizația de serviciu (im-trainer)
+#  — insteadOf rescrie automat, copiază URL-ul ca atare
 git clone git@github.com:im-trainer/some-repo.git
 
 # Repo personal — nu e nevoie de rescriere
@@ -103,10 +104,10 @@ GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519_work -o IdentitiesOnly=yes" git push
 
 ## 📋 Rezultatul
 
-| Organizație              | Cheie folosită                          |
-| ------------------------ | --------------------------------------- |
-| `im-trainer/*`           | `id_ed25519_work` (auto prin insteadOf) |
-| `nmatei/*` sau oricare altele | `id_rsa` (personală, fallback)     |
+| Organizație                   | Cheie folosită                          |
+| ----------------------------- | --------------------------------------- |
+| `im-trainer/*`                | `id_ed25519_work` (auto prin insteadOf) |
+| `nmatei/*` sau oricare altele | `id_rsa` (personală, fallback)          |
 
 Configurează asta o dată și vei uita că există — mereu este folosită identitatea corectă.
 

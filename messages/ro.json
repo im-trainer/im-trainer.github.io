@@ -215,7 +215,9 @@
     "noPostsTitle": "Articole în curând",
     "noPostsDescription": "Pregătim conținut de calitate despre web development, carieră în IT și best practices. Revino curând!",
     "backToBlog": "Înapoi la Blog",
-    "publishedOn": "Publicat pe"
+    "publishedOn": "Publicat pe",
+    "copyCode": "Copiază blocul de cod",
+    "codeCopied": "Cod copiat"
   },
   "contact": {
     "meta": {

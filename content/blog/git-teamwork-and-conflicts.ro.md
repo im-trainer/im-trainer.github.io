@@ -49,7 +49,7 @@ git stash && git checkout master && git pull --rebase && git stash pop
 
 Mai devreme sau mai târziu, doi oameni modifică aceleași linii și Git nu poate decide cine „câștigă" 🙈 — acesta este un conflict. Git marchează locul în fișier astfel:
 
-```
+```diff
 <<<<<<< HEAD
 versiunea ta
 =======

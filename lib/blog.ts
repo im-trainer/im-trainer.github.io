@@ -1,9 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { remark } from "remark";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
-import remarkHtml from "remark-html";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import rehypeHighlightSubset from "@/lib/highlight";
+import rehypeCodeBlock from "@/lib/rehype/code-block";
+import rehypeExternalLinks from "@/lib/rehype/external-links";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 const FILE_RE = /^(.+)\.(ro|en)\.md$/;
@@ -38,20 +43,6 @@ function normalizeTags(data: Record<string, unknown>): string[] {
     return [category.trim()];
   }
   return [];
-}
-
-/**
- * Make external links (absolute http/https URLs) open in a new tab, with
- * `rel="noopener"` to block `window.opener` hijacking. We intentionally omit
- * `noreferrer` so partner/course sites still see referral traffic from us.
- * Internal links are relative (`/ro/…`, `/en/…`) so they don't match and keep
- * opening in the same tab.
- */
-function openExternalLinksInNewTab(html: string): string {
-  return html.replace(
-    /<a href="(https?:\/\/[^"]+)"/g,
-    '<a href="$1" target="_blank" rel="noopener"'
-  );
 }
 
 function readAllFiles(): { slug: string; locale: string; file: string }[] {
@@ -100,8 +91,52 @@ export function getAllTags(locale: string): string[] {
   return [...set].sort((a, b) => a.localeCompare(b));
 }
 
+/**
+ * Markdown -> HTML, with build-time syntax highlighting.
+ *
+ * This is a full unified pipeline rather than `remark-html` because
+ * `remark-html` is a terminal compiler (mdast straight to an HTML string):
+ * there is no point at which a rehype plugin could run. Going through
+ * `remark-rehype` gives us the hast stage the highlighter needs.
+ *
+ * Security note: we do NOT pass `allowDangerousHtml`, and we do not add
+ * `rehype-raw`, so raw HTML written in a Markdown file is dropped — same as
+ * before this migration. What we did lose is `remark-html`'s implicit
+ * `hast-util-sanitize` pass, which also filtered URL protocols. Adding
+ * `rehype-sanitize` back is not worth it here: posts are Markdown we author
+ * and commit ourselves, and the sanitizer would have to run *before*
+ * highlighting (or it strips every token span) and then be re-taught about
+ * `div.code-block`, `button` and every `hljs-*` class.
+ */
+const processor = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkRehype)
+  .use(rehypeHighlightSubset)
+  .use(rehypeExternalLinks)
+  .use(rehypeCodeBlock)
+  .use(rehypeStringify);
+
+// Every post is rendered twice per page — once in `generateMetadata`, once in
+// the page component. That was free with plain Markdown; with highlighting it
+// is not. This module only ever runs at build time (`output: "export"`), so a
+// plain Map is safe.
+const postCache = new Map<string, BlogPost | undefined>();
+
 /** A single localized post with rendered HTML, or undefined if missing. */
 export async function getPostBySlug(
+  slug: string,
+  locale: string
+): Promise<BlogPost | undefined> {
+  const key = `${slug}.${locale}`;
+  if (postCache.has(key)) return postCache.get(key);
+
+  const post = await renderPost(slug, locale);
+  postCache.set(key, post);
+  return post;
+}
+
+async function renderPost(
   slug: string,
   locale: string
 ): Promise<BlogPost | undefined> {
@@ -111,10 +146,7 @@ export async function getPostBySlug(
 
   const raw = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(raw);
-  const processed = await remark()
-    .use(remarkGfm)
-    .use(remarkHtml)
-    .process(content);
+  const processed = await processor.process(content);
 
   return {
     slug,
@@ -123,6 +155,6 @@ export async function getPostBySlug(
     excerpt: String(data.excerpt ?? ""),
     date: String(data.date ?? ""),
     tags: normalizeTags(data),
-    contentHtml: openExternalLinksInNewTab(processed.toString()),
+    contentHtml: processed.toString(),
   };
 }

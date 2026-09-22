@@ -7,6 +7,7 @@ import { getAllSlugs, getPostBySlug } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
 import { buildMetadata, blogPostingLd } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import CodeCopy from "@/components/CodeCopy";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -101,10 +102,12 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Content */}
       <section className="bg-slate-50 py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="prose prose-slate max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-          />
+          <CodeCopy>
+            <div
+              className="prose prose-slate max-w-none"
+              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            />
+          </CodeCopy>
 
           <div className="mt-12 pt-8 border-t border-slate-200">
             <Link

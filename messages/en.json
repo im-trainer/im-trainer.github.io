@@ -215,7 +215,9 @@
     "noPostsTitle": "Articles coming soon",
     "noPostsDescription": "We are preparing quality content about web development, IT careers, and best practices. Check back soon!",
     "backToBlog": "Back to Blog",
-    "publishedOn": "Published on"
+    "publishedOn": "Published on",
+    "copyCode": "Copy code block",
+    "codeCopied": "Code copied"
   },
   "contact": {
     "meta": {

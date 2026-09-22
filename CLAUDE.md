@@ -32,7 +32,11 @@ Articles are **Markdown files**, two per post (one per language), under `content
 content/blog/{slug}.ro.md
 content/blog/{slug}.en.md
 ```
-Each has YAML frontmatter (`title`, `excerpt`, `date` "YYYY-MM-DD", `category`) and a Markdown body. `lib/blog.ts` loads them at build time (`gray-matter` + `remark`/`remark-gfm`/`remark-html`), exposing `getAllPosts(locale)` (sorted newest-first), `getAllSlugs()`, and `getPostBySlug(slug, locale)`. The detail page renders `contentHtml` in a Tailwind `prose` container.
+Each has YAML frontmatter (`title`, `excerpt`, `date` "YYYY-MM-DD", `category`) and a Markdown body. `lib/blog.ts` loads them at build time (`gray-matter` + a `unified` pipeline: `remark-parse`/`remark-gfm`/`remark-rehype` → `lib/highlight.ts` (syntax highlighting) → `lib/rehype/external-links.ts` → `lib/rehype/code-block.ts` → `rehype-stringify`), exposing `getAllPosts(locale)` (sorted newest-first), `getAllSlugs()`, and `getPostBySlug(slug, locale)`. The detail page renders `contentHtml` in a Tailwind `prose` container, wrapped in `components/CodeCopy.tsx` which portals a copy button into each code block.
+
+**Code fences are highlighted at build time** — zero highlighting JS reaches the browser. Supported languages (`lib/highlight.ts`): `bash` (`sh`/`shell`/`zsh`), `css`, `diff`, `java`, `javascript` (`js`/`jsx`), `json`, `python` (`py`), `sql`, `ssh-config` (`sshconfig`), `typescript` (`ts`/`tsx`), `xml` (`html`), `yaml` (`yml`). An unlisted or missing language renders as plain text — never auto-detected — so add the grammar to `lib/highlight.ts` if you need a new one.
+
+Two grammars are customized there: `diff` is extended to recognize Git conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) under a custom `hljs-conflict` scope styled in `app/globals.css`, and `ssh-config` is an alias onto highlight.js's `apache` grammar, which has the same `Directive value` shape (highlight.js ships no ssh-config grammar).
 
 **To add a post, use the `add-blog-post` skill** (`.claude/skills/add-blog-post/`) — it creates the two files; no code edits needed. The `blog` namespace in `messages/*.json` is page chrome only, not article content.
 

@@ -87,7 +87,9 @@ If a requested topic doesn't clearly fit an audience and pillar above, **say so 
 
 ## Markdown support
 
-The body is rendered with `remark` + `remark-gfm` → HTML, styled with Tailwind Typography (`prose`). Full Markdown works: `##`/`###` headings, **bold**, *italic*, `inline code`, fenced code blocks, [links](https://example.com), ordered and unordered lists, blockquotes, tables, and images.
+The body is rendered with a `unified` (remark → rehype) pipeline, styled with Tailwind Typography (`prose`). Full Markdown works: `##`/`###` headings, **bold**, *italic*, `inline code`, fenced code blocks, [links](https://example.com), ordered and unordered lists, blockquotes, tables, and images.
+
+- **Code blocks:** always tag the fence with a language — it is highlighted at build time and gets a copy button. Supported: `bash` (`sh`/`shell`/`zsh`), `css`, `diff`, `java`, `javascript` (`js`/`jsx`), `json`, `python` (`py`), `sql`, `ssh-config` (`sshconfig`), `typescript` (`ts`/`tsx`), `xml` (`html`), `yaml` (`yml`). Use ```diff for Git conflict markers too — they are highlighted. An untagged or unsupported fence still renders, and still gets a copy button, but stays uncolored — the language is never guessed. To add a language, register its grammar in `lib/highlight.ts`.
 
 - **Images:** put the asset in `public/` and reference it with a root-relative path, e.g. `![Alt text](/blog/my-image.png)`. Note the site is statically exported with unoptimized images.
 - Do **not** include an H1 (`#`) in the body — the page renders the `title` as the H1 already. Start section headings at `##`.
