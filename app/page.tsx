@@ -2,16 +2,16 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { detectBrowserLocale, readStoredLocale } from "@/lib/localePreference";
 
-// Root page: detect browser language and redirect to the appropriate locale.
-// Defaults to Romanian if no preference is detected.
+// Root page: send the visitor to the language they last browsed in, falling
+// back to the browser language (and then to the default locale, Romanian).
 export default function RootPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const lang =
-      navigator.language.toLowerCase().startsWith("en") ? "en" : "ro";
-    router.replace(`/${lang}`);
+    const locale = readStoredLocale() ?? detectBrowserLocale();
+    router.replace(`/${locale}`);
   }, [router]);
 
   return null;
