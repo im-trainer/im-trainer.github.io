@@ -40,10 +40,30 @@ export default async function HomePage({ params }: Props) {
   const s = await getTranslations({ locale, namespace: "services" });
 
   const services = [
-    { icon: GraduationCap, key: "corporate", href: "/services", color: "bg-sky-50 text-sky-600" },
-    { icon: BookOpen, key: "public", href: "/services", color: "bg-amber-50 text-amber-600" },
-    { icon: Code2, key: "software", href: "/services", color: "bg-emerald-50 text-emerald-600" },
-    { icon: Lightbulb, key: "consulting", href: "/services", color: "bg-violet-50 text-violet-600" },
+    {
+      icon: GraduationCap,
+      key: "corporate",
+      href: "/services",
+      color: "bg-sky-50 text-sky-600",
+    },
+    {
+      icon: BookOpen,
+      key: "public",
+      href: "/services",
+      color: "bg-amber-50 text-amber-600",
+    },
+    {
+      icon: Code2,
+      key: "software",
+      href: "/services",
+      color: "bg-emerald-50 text-emerald-600",
+    },
+    {
+      icon: Lightbulb,
+      key: "consulting",
+      href: "/services",
+      color: "bg-violet-50 text-violet-600",
+    },
   ];
 
   const testimonials = [0, 1, 2].map((i) => ({
@@ -129,7 +149,9 @@ export default async function HomePage({ params }: Props) {
                 href={`/${locale}${href}`}
                 className="group p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:border-sky-200 hover:bg-white hover:shadow-sm transition-all"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${color}`}>
+                <div
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${color}`}
+                >
                   <Icon size={22} />
                 </div>
                 <h3 className="font-semibold text-slate-900 mb-2 group-hover:text-sky-600 transition-colors">
@@ -160,7 +182,7 @@ export default async function HomePage({ params }: Props) {
                 {t("udemy.description")}
               </p>
               <a
-                href="https://nmatei.github.io/web"
+                href={s("udemy.url")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-sky-600 font-semibold hover:bg-sky-50 transition-colors shadow-sm"
@@ -203,13 +225,18 @@ export default async function HomePage({ params }: Props) {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map(({ quote, author, company }, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-slate-100">
+              <div
+                key={i}
+                className="bg-white rounded-2xl p-6 border border-slate-100"
+              >
                 <Quote size={24} className="text-sky-200 mb-4" />
                 <p className="text-slate-700 leading-relaxed mb-4 italic">
                   &ldquo;{quote}&rdquo;
                 </p>
                 <div className="border-t border-slate-100 pt-4">
-                  <p className="text-sm font-semibold text-slate-800">{author}</p>
+                  <p className="text-sm font-semibold text-slate-800">
+                    {author}
+                  </p>
                   <p className="text-xs text-slate-400">{company}</p>
                 </div>
               </div>
@@ -221,8 +248,12 @@ export default async function HomePage({ params }: Props) {
       {/* CTA banner */}
       <section className="bg-slate-900 py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-3">{t("cta.title")}</h2>
-          <p className="text-slate-400 mb-8 max-w-lg mx-auto">{t("cta.subtitle")}</p>
+          <h2 className="text-3xl font-bold text-white mb-3">
+            {t("cta.title")}
+          </h2>
+          <p className="text-slate-400 mb-8 max-w-lg mx-auto">
+            {t("cta.subtitle")}
+          </p>
           <Link
             href={`/${locale}/contact`}
             className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-sky-500 text-white font-semibold hover:bg-sky-400 transition-colors"

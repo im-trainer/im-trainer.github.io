@@ -158,7 +158,7 @@
       "title": "Curs Udemy: Devino Web Developer de la Zero",
       "description": "Un ghid complet și pas cu pas pentru oricine dorește să înceapă în web development. Acoperă HTML, CSS, JavaScript, Git, flexbox, grid, DOM, events și proiecte practice.",
       "cta": "Accesează cursul pe Udemy",
-      "url": "https://nmatei.github.io/web"
+      "url": "https://nmatei.github.io/ro/web"
     },
     "cta": {
       "title": "Nu știi sigur ce ai nevoie?",
@@ -265,7 +265,9 @@
     "social": "Social",
     "rights": "Toate drepturile rezervate.",
     "company": "IM Trainer SRL",
-    "builtWith": "AI amplifică cunoașterea TA"
+    "builtWith": "AI amplifică cunoașterea TA",
+    "udemy": "Curs Udemy",
+    "udemyUrl": "https://nmatei.github.io/ro/web"
   },
   "common": {
     "learnMore": "Află mai mult",

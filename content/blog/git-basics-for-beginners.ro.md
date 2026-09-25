@@ -7,7 +7,7 @@ tags: ["Git", "Dev Tools"]
 
 ## 💡 Ce face Git, de fapt
 
-Git este un sistem de control al versiunilor: păstrează istoricul complet al fiecărei modificări din proiect, ca să poți reveni în timp, să vezi cine ce a schimbat și să lucrezi la același cod împreună cu alți oameni fără să vă suprascrieți reciproc. GitHub este doar un loc unde găzduiești proiectele Git online. Ai nevoie doar de câteva comenzi ca să fii productiv — despre ele este acest articol.
+[Git](https://git-scm.com/about) este un sistem de control al versiunilor: păstrează istoricul complet al fiecărei modificări din proiect, ca să poți reveni în timp, să vezi cine ce a schimbat și să lucrezi la același cod împreună cu alți oameni fără să vă suprascrieți reciproc. [GitHub](https://github.com) este doar un loc unde găzduiești proiectele Git online. Ai nevoie doar de câteva comenzi ca să fii productiv — despre ele este acest articol.
 
 ## ⚙️ Configurarea inițială
 

@@ -7,7 +7,7 @@ tags: ["Git", "Dev Tools"]
 
 ## 💡 What Git actually does
 
-Git is a version control system: it keeps a full history of every change in your project, so you can go back in time, see who changed what, and work on the same code as other people without overwriting each other. GitHub is just a place to host those Git projects online. You only need a small set of commands to be productive — this post covers them.
+[Git](https://git-scm.com/about) is a version control system: it keeps a full history of every change in your project, so you can go back in time, see who changed what, and work on the same code as other people without overwriting each other. [GitHub](https://github.com) is just a place to host those Git projects online. You only need a small set of commands to be productive — this post covers them.
 
 ## ⚙️ One-time setup
 

@@ -106,13 +106,13 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://nmatei.github.io/web"
+                  href={t("udemyUrl")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
                 >
                   <ExternalLink size={16} />
-                  Udemy Course
+                  {t("udemy")}
                 </a>
               </li>
             </ul>

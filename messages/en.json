@@ -265,7 +265,9 @@
     "social": "Social",
     "rights": "All rights reserved.",
     "company": "IM Trainer SRL",
-    "builtWith": "AI amplifies YOUR knowledge"
+    "builtWith": "AI amplifies YOUR knowledge",
+    "udemy": "Udemy Course",
+    "udemyUrl": "https://nmatei.github.io/web"
   },
   "common": {
     "learnMore": "Learn more",
