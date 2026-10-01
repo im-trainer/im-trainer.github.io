@@ -1,11 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { Check, Copy } from "lucide-react";
 
-const RESET_MS = 2000;
+const RESET_MS = 3000;
 
 /**
  * Renders the real copy button into one `<button data-code-copy>` slot that
@@ -39,7 +45,10 @@ function CopyButton({ slot }: { slot: HTMLElement }) {
     // has split the code into dozens of spans, and the DOM is the only source
     // that is guaranteed to match what the reader actually sees. Scoped to the
     // <pre>, so the bar's language name never ends up in the clipboard.
-    const code = slot.closest(".code-block")?.querySelector("pre")?.textContent;
+    const code = slot
+      .closest(".code-block")
+      ?.querySelector("pre")
+      ?.textContent?.trim();
     if (!code) return;
 
     try {
@@ -77,14 +86,16 @@ export default function CodeCopy({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!ref.current) return;
     setSlots(
-      Array.from(ref.current.querySelectorAll<HTMLElement>("[data-code-copy]"))
+      Array.from(ref.current.querySelectorAll<HTMLElement>("[data-code-copy]")),
     );
   }, []);
 
   return (
     <div ref={ref}>
       {children}
-      {slots.map((slot, i) => createPortal(<CopyButton slot={slot} />, slot, String(i)))}
+      {slots.map((slot, i) =>
+        createPortal(<CopyButton slot={slot} />, slot, String(i)),
+      )}
     </div>
   );
 }
