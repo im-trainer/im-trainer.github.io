@@ -12,6 +12,14 @@
       "title": "IM Trainer SRL — Training IT și Dezvoltare Software în România",
       "description": "Cursuri corporative și publice de web development, soluții software la comandă și consultanță IT. Bazați în România, activi la nivel internațional."
     },
+    "quickLinks": {
+      "label": "Articolele tale",
+      "pinned": "Fixate",
+      "pinnedEmpty": "Fixează un articol ca să-l ai mereu aici",
+      "pinCurrent": "Fixează acest articol aici",
+      "mostVisited": "Cele mai accesate",
+      "visits": "{count, plural, one {# vizită} few {# vizite} other {# de vizite}}"
+    },
     "hero": {
       "badge": "Training IT & Software",
       "headline": "Formăm Experți în Web Development",
@@ -215,11 +223,29 @@
     "noPostsTitle": "Articole în curând",
     "noPostsDescription": "Pregătim conținut de calitate despre web development, carieră în IT și best practices. Revino curând!",
     "backToBlog": "Înapoi la Blog",
+    "backToTop": "Sus",
+    "backToTopHint": "Înapoi la începutul articolului",
     "publishedOn": "Publicat pe",
     "copyCode": "Copiază blocul de cod",
     "codeCopied": "Cod copiat",
     "copyCodeShort": "Copiază",
-    "codeCopiedShort": "Copiat!"
+    "codeCopiedShort": "Copiat!",
+    "tagsLabel": "Filtrează articolele după etichetă",
+    "allTags": "Toate",
+    "filterByTag": "Filtrează după eticheta {tag}",
+    "noPostsForTag": "Niciun articol pentru: {tag}",
+    "showAllPosts": "Vezi toate articolele",
+    "pin": "Fixează",
+    "unpin": "Anulează fixarea",
+    "pinHint": "Fixează în bara de sus pentru acces rapid",
+    "unpinHint": "Scoate din bara de sus",
+    "share": "Distribuie articolul",
+    "linkCopied": "Link copiat",
+    "newBadge": "Nou",
+    "readBadge": "Citit",
+    "unread": "Necitite",
+    "clearTags": "Șterge etichetele",
+    "noUnread": "Ai citit toate articolele de aici"
   },
   "contact": {
     "meta": {

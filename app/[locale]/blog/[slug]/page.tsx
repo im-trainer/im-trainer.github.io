@@ -3,11 +3,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
-import { getAllSlugs, getPostBySlug } from "@/lib/blog";
+import { getAllPosts, getAllSlugs, getPostBySlug } from "@/lib/blog";
 import { routing } from "@/i18n/routing";
 import { buildMetadata, blogPostingLd } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import CodeCopy from "@/components/CodeCopy";
+import PinButton from "@/components/blog/PinButton";
+import ShareButton from "@/components/blog/ShareButton";
+import ScrollTopButton from "@/components/blog/ScrollTopButton";
+import TrackVisit from "@/components/blog/TrackVisit";
+import QuickLinksBar from "@/components/QuickLinksBar";
+import { formatDate, tagHref } from "@/lib/formatDate";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -37,13 +43,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-function formatDate(dateStr: string, locale: string) {
-  return new Date(dateStr).toLocaleDateString(
-    locale === "ro" ? "ro-RO" : "en-GB",
-    { year: "numeric", month: "long", day: "numeric" }
-  );
-}
-
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
@@ -67,6 +66,13 @@ export default async function BlogPostPage({ params }: Props) {
           tags: post.tags,
         })}
       />
+      <TrackVisit slug={slug} />
+      {/* Pinned + most visited articles, from the visitor's own browser */}
+      <QuickLinksBar
+        locale={locale}
+        posts={getAllPosts(locale).map(({ slug, title }) => ({ slug, title }))}
+        currentSlug={slug}
+      />
       {/* Hero */}
       <section className="bg-white py-12 border-b border-slate-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,14 +90,20 @@ export default async function BlogPostPage({ params }: Props) {
               {formatDate(post.date, locale)}
             </span>
             {post.tags.map((tag) => (
-              <span
+              <Link
                 key={tag}
-                className="inline-flex items-center gap-1 rounded-full bg-sky-50 text-sky-700 px-2.5 py-0.5 font-medium"
+                href={tagHref(locale, tag)}
+                aria-label={t("filterByTag", { tag })}
+                className="inline-flex items-center gap-1 rounded-full bg-sky-50 text-sky-700 px-2.5 py-0.5 font-medium hover:bg-sky-100 transition-colors"
               >
                 <Tag size={11} />
                 {tag}
-              </span>
+              </Link>
             ))}
+            <span className="ml-auto flex items-center gap-2">
+              <PinButton slug={slug} />
+              <ShareButton path={`/${locale}/blog/${slug}`} title={post.title} />
+            </span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
             {title}
@@ -109,7 +121,7 @@ export default async function BlogPostPage({ params }: Props) {
             />
           </CodeCopy>
 
-          <div className="mt-12 pt-8 border-t border-slate-200">
+          <div className="mt-12 pt-8 border-t border-slate-200 flex items-center justify-between gap-4">
             <Link
               href={`/${locale}/blog`}
               className="inline-flex items-center gap-1.5 text-sm text-sky-500 hover:text-sky-700 font-medium transition-colors"
@@ -117,6 +129,7 @@ export default async function BlogPostPage({ params }: Props) {
               <ArrowLeft size={15} />
               {t("backToBlog")}
             </Link>
+            <ScrollTopButton />
           </div>
         </div>
       </section>

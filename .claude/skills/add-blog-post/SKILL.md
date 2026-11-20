@@ -66,7 +66,7 @@ If a requested topic doesn't clearly fit an audience and pillar above, **say so 
    And shared across both languages:
    - `slug` — **always English**, kebab-case, ASCII, no dots (e.g. `intro-to-typescript`), even for a Romanian article. The slug is shared across both languages and forms the URL: `/{locale}/blog/{slug}` (same convention as the site's route keys, e.g. `/ro/clients`).
    - `date` — `YYYY-MM-DD`. Default to today if the user doesn't specify.
-   - `tags` — a YAML array of free-form strings, each shown as its own pill (e.g. `["Git", "Dev Tools"]`, `["Career"]`). Kept identical across languages unless the user wants translated labels. The legacy single-string `category:` field is still supported for backward compatibility (rendered as one tag), but prefer `tags` for new posts. Tags are the basis for future filtering, so reuse existing tag names where possible — see `getAllTags(locale)` in `lib/blog.ts`.
+   - `tags` — a YAML array of free-form strings, each shown as its own pill (e.g. `["Git", "Dev Tools"]`, `["Career"]`). Kept identical across languages unless the user wants translated labels. The legacy single-string `category:` field is still supported for backward compatibility (rendered as one tag), but prefer `tags` for new posts. Tags drive the filter on the blog index (`/blog?tag=…`, matched by the tag's slug, e.g. `Dev Tools` -> `Dev-Tools`), so reuse existing tag names exactly, same spelling and capitalization — see `getAllTags(locale)` in `lib/blog.ts`.
 
 4. **Verify the slug is free.** Check that no `content/blog/{slug}.ro.md` or `content/blog/{slug}.en.md` already exists. If it does, pick a different slug or confirm the user wants to overwrite.
 

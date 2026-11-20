@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildMetadata } from "@/lib/seo";
+import { getAllPosts } from "@/lib/blog";
+import QuickLinksBar from "@/components/QuickLinksBar";
 import {
   ArrowRight,
   BookOpen,
@@ -74,6 +76,12 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <>
+      {/* Pinned + most visited articles, from the visitor's own browser */}
+      <QuickLinksBar
+        locale={locale}
+        posts={getAllPosts(locale).map(({ slug, title }) => ({ slug, title }))}
+      />
+
       {/* Hero */}
       <section className="relative bg-white overflow-hidden">
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">

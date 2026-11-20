@@ -36,7 +36,7 @@ Circulă mitul că „robotul îmi respinge CV-ul”. De cele mai multe ori, CV-
 
 Și încă ceva important: **CV-ul nu este o arhivă completă**. A-l ține la zi nu înseamnă să adaugi la nesfârșit. Scoate ce nu mai este relevant, ca lucrurile care contează azi să se vadă imediat.
 
-## ✨ Rememberable, fără să te lauzi
+## ✨ Memorabil, fără să te lauzi
 
 Mulți evită să scrie despre ce au făcut ca să nu pară că se laudă. Dar nu este laudă să prezinți adevărul: ce ai făcut și ce îți place să faci. Uneori exact asta îi motivează pe alții, iar pe tine te scoate în evidență dintr-un teanc de CV-uri care arată la fel.
 
