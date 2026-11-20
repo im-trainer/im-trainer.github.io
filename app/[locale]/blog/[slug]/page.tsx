@@ -11,6 +11,7 @@ import CodeCopy from "@/components/CodeCopy";
 import PinButton from "@/components/blog/PinButton";
 import ShareButton from "@/components/blog/ShareButton";
 import ScrollTopButton from "@/components/blog/ScrollTopButton";
+import ArticleOutline from "@/components/blog/ArticleOutline";
 import TrackVisit from "@/components/blog/TrackVisit";
 import QuickLinksBar from "@/components/QuickLinksBar";
 import { formatDate, tagHref } from "@/lib/formatDate";
@@ -67,6 +68,7 @@ export default async function BlogPostPage({ params }: Props) {
         })}
       />
       <TrackVisit slug={slug} />
+      <ArticleOutline headings={post.headings} />
       {/* Pinned + most visited articles, from the visitor's own browser */}
       <QuickLinksBar
         locale={locale}

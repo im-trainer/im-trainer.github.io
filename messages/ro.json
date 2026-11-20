@@ -245,7 +245,8 @@
     "readBadge": "Citit",
     "unread": "Necitite",
     "clearTags": "Șterge etichetele",
-    "noUnread": "Ai citit toate articolele de aici"
+    "noUnread": "Ai citit toate articolele de aici",
+    "outline": "Cuprinsul articolului"
   },
   "contact": {
     "meta": {

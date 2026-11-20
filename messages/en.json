@@ -245,7 +245,8 @@
     "readBadge": "Read",
     "unread": "Unread",
     "clearTags": "Clear tags",
-    "noUnread": "You have read every article here"
+    "noUnread": "You have read every article here",
+    "outline": "On this page"
   },
   "contact": {
     "meta": {

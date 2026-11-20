@@ -9,6 +9,7 @@ import rehypeStringify from "rehype-stringify";
 import rehypeHighlightSubset from "@/lib/highlight";
 import rehypeCodeBlock from "@/lib/rehype/code-block";
 import rehypeExternalLinks from "@/lib/rehype/external-links";
+import rehypeHeadings, { type Heading } from "@/lib/rehype/headings";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 const FILE_RE = /^(.+)\.(ro|en)\.md$/;
@@ -24,6 +25,8 @@ export interface BlogPostMeta {
 
 export interface BlogPost extends BlogPostMeta {
   contentHtml: string;
+  /** `h2` / `h3` sections in document order, for the article outline. */
+  headings: Heading[];
 }
 
 /**
@@ -114,6 +117,7 @@ const processor = unified()
   .use(remarkRehype)
   .use(rehypeHighlightSubset)
   .use(rehypeExternalLinks)
+  .use(rehypeHeadings)
   .use(rehypeCodeBlock)
   .use(rehypeStringify);
 
@@ -156,5 +160,6 @@ async function renderPost(
     date: String(data.date ?? ""),
     tags: normalizeTags(data),
     contentHtml: processed.toString(),
+    headings: (processed.data.headings as Heading[] | undefined) ?? [],
   };
 }
