@@ -14,6 +14,12 @@ content/blog/{slug}.en.md
 
 The loader (`lib/blog.ts`) reads these at build time, so **adding a post means creating two files. Never edit `lib/blog.ts` or the page components to add content.** Posts auto-sort newest-first by `date` — no ordering to manage.
 
+## Draft in one language first
+
+**Write the article in a single language, iterate on it with the user, and add the second language only once they approve the result.** Every revision of a two-language draft costs double the tokens and risks the two files drifting apart, so the second file is a one-time translation of the final text — never something kept in sync during editing.
+
+At the start, ask the user which language to draft in (use `AskUserQuestion`; **Romanian is the default** and the first option, English the second). Skip the question only if they already named the language in their request.
+
 ## Audience & editorial scope (read this before writing)
 
 The blog is a **lead magnet for IM Trainer SRL**, a Romanian company with two offerings: **IT training** (corporate + public web-dev courses) and **custom software / web development**. Every post must earn its place by serving people one of those two businesses sells to. It is not a general tech/personal blog — a post that wouldn't help a reader trust IM Trainer as either a *web-dev trainer* or a *software builder* does not belong here.
@@ -51,7 +57,9 @@ If a requested topic doesn't clearly fit an audience and pillar above, **say so 
 
 1. **Pick the audience & check fit.** Before drafting, state explicitly whether the post targets **Training (A)**, **Software dev (B)**, or **both**, and which pillar it lands in. Confirm it reads in the author's voice (see Tone). If the topic is borderline or off-scope, surface that to the user and suggest an on-brand angle rather than writing it anyway. Reuse an existing tag where the topic overlaps one.
 
-2. **Gather the article details.** You need, for **both** RO and EN:
+2. **Ask for the draft language** (see "Draft in one language first") — RO by default.
+
+3. **Gather the article details.** You need, in the draft language only for now:
    - `title` — the article headline in that language
    - `excerpt` — a 1–2 sentence summary (shown on the blog list card and used as the meta description)
    - the Markdown body
@@ -60,11 +68,9 @@ If a requested topic doesn't clearly fit an audience and pillar above, **say so 
    - `date` — `YYYY-MM-DD`. Default to today if the user doesn't specify.
    - `tags` — a YAML array of free-form strings, each shown as its own pill (e.g. `["Git", "Dev Tools"]`, `["Career"]`). Kept identical across languages unless the user wants translated labels. The legacy single-string `category:` field is still supported for backward compatibility (rendered as one tag), but prefer `tags` for new posts. Tags are the basis for future filtering, so reuse existing tag names where possible — see `getAllTags(locale)` in `lib/blog.ts`.
 
-   If the user provides only one language, draft the other by translating (RO is the site's default language), and confirm the translation with them before writing.
+4. **Verify the slug is free.** Check that no `content/blog/{slug}.ro.md` or `content/blog/{slug}.en.md` already exists. If it does, pick a different slug or confirm the user wants to overwrite.
 
-3. **Verify the slug is free.** Check that no `content/blog/{slug}.ro.md` or `content/blog/{slug}.en.md` already exists. If it does, pick a different slug or confirm the user wants to overwrite.
-
-4. **Write both files** with this exact frontmatter shape:
+5. **Write the draft-language file only** (`content/blog/{slug}.{draft-locale}.md`) with this exact frontmatter shape:
 
    ```md
    ---
@@ -79,11 +85,13 @@ If a requested topic doesn't clearly fit an audience and pillar above, **say so 
    Body paragraph with full Markdown support.
    ```
 
-   Keep `date` identical in both files.
+6. **Review loop.** Give the user the file path and the draft URL (`/{draft-locale}/blog/{slug}`), then apply their changes to that one file until they say the article is final. Do **not** create the second-language file during this loop, and do not commit or deploy yet: while only one language exists, the other locale's URL for this slug is a 404 that the sitemap and hreflang tags still point to.
 
-5. **Confirm to the user** the two file paths created and the resulting URLs (`/ro/blog/{slug}` and `/en/blog/{slug}`).
+7. **Add the second language.** Once the user approves the draft, translate the final text into the other language and write `content/blog/{slug}.{other-locale}.md`. Translate faithfully — same sections, same links (with the locale prefix of internal links switched), same `date` and `tags`. If the user asks for changes after this point, apply them to both files.
 
-6. **Verify** (recommended): run `npm run dev`, open `/ro/blog` and `/en/blog` (the new post should appear at/near the top, sorted by date), open both post URLs, then run `npm run build` to confirm the static export succeeds.
+8. **Confirm to the user** the two file paths and the resulting URLs (`/ro/blog/{slug}` and `/en/blog/{slug}`).
+
+9. **Verify** (recommended, after both files exist): run `npm run dev`, open `/ro/blog` and `/en/blog` (the new post should appear at/near the top, sorted by date), open both post URLs, then run `npm run build` to confirm the static export succeeds.
 
 ## Markdown support
 
